@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- 引入Element UI的CSS -->
+<link href="https://unpkg.com/element-plus@2.3.1/dist/index.css" rel="stylesheet"/>
+<!-- 引入Element UI的JavaScript -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/element-plus@2.3.1/dist/index.full.js"></script>
+<title>摇滚之声 the sound of rock</title>
+<style>
+        /* 导航栏悬停效果 */
+        nav ul li a:hover {
+            color: #ff6347;
+            transition: color 0.3s ease;
+        }
+
+        /* 顶部视差效果容器样式 */
+       .parallax-top {
+            position: relative;
+            height: calc(100vh + 50px); /* 加长50px */
+            overflow: hidden;
+        }
+
+       .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/背景2.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
+       .parallax-content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* 艺术化标题样式 */
+       .artistic-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 10px #ff6347, 0 0 20px #ff6347, 0 0 30px #ff6347;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff6347, 0 0 20px #ff6347, 0 0 30px #ff6347;
+            }
+            to {
+                text-shadow: 0 0 20px #ff6347, 0 0 30px #ff6347, 0 0 40px #ff6347;
+            }
+        }
+
+        /* 修改后的背景色 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #525252;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3d72b4, #525252);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3d72b4, #525252); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white; /* 页面整体文字颜色为白色 */
+        }
+
+       .topnav {
+            overflow: hidden;
+            background-color: transparent; /* 导航背景透明 */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+            font-size: 1.2rem; /* 增大字号 */
+            font-weight: bold; /* 加粗字体 */
+        }
+
+       .topnav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+       .topnav li {
+            margin: 0;
+        }
+
+       .topnav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+       .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+       .container {
+            display: flex;
+            justify-content: center;
+            margin: 200px auto;
+            max-width: 90%;
+        }
+
+       .container__column {
+            flex: 1;
+            margin: 0 50px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            height: 450px; /* 增加高度至450px */
+        }
+
+       .container__column img {
+            max-width: 100%;
+            height: auto;
+        }
+
+       .container__content {
+            flex: 1;
+            padding: 10px;
+            color: black;
+        }
+
+       .container__content h3 {
+            font-size: larger;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+       .container__content p {
+            margin-top: 0;
+        }
+
+       .container__column a {
+            color: black;
+        }
+
+       .container__column a:hover {
+            color: blue;
+        }
+
+       .guestbook {
+            margin: 80px auto 0px;
+            padding: 50px;
+            border: 3px solid #ccc;
+            text-align: center;
+            max-width: 600px;
+        }
+
+       .guestbook input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 15px;
+            margin-bottom: 15px;
+            color: black;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+
+       .guestbook button {
+            padding: 15px 30px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+       .guestbook button:hover {
+            background-color: #555;
+        }
+
+       .word-cloud {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            margin-top: 20px;
+            border: none;
+            overflow: hidden;
+        }
+
+       .message {
+            position: absolute;
+            white-space: nowrap;
+            top: 0;
+            left: 100%;
+            animation: move 10s linear infinite;
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes move {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100%;
+            }
+        }
+
+       .footer-quote {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            margin: 0px 0 200px;
+            font-size: 26px;
+        }
+
+        /* 去掉轮播图容器的高度限制 */
+       .el-carousel {
+            height: auto !important;
+        }
+       .el-carousel__item {
+            height: auto !important;
+        }
+       .el-carousel__item img {
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        /* 去掉轮播图右侧滑动栏 */
+       .el-carousel::-webkit-scrollbar {
+            display: none;
+        }
+       .el-carousel {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 让切换箭头更明显 */
+       .el-carousel__arrow {
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            opacity: 0.8;
+            top: 55%;
+            transform: translateY(-50%);
+        }
+       .el-carousel__arrow:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 视差底部过渡效果 */
+       .parallax-top::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+<!-- 导航栏 -->
+<div class="topnav">
+<ul class="flex justify-center space-x-8 py-4">
+<li><a href="index.html">主页</a></li>
+<li><a href="摇滚之路.html">摇滚之路</a></li>
+<li><a href="rock_window.html">摇滚之窗</a></li>
+<li><a href="rock_hall_of_fame.html">摇滚名人堂</a></li>
+<li><a href="guestbook.html">留言板</a></li>
+</ul>
+</div>
+<!-- 标题 -->
+<div class="parallax-top">
+<div class="parallax-bg"></div>
+<div class="parallax-content">
+<header class="text-white text-center py-6">
+<h1 class="artistic-title">摇滚之声<br/>the sound of rock</h1>
+</header>
+<!-- 轮播图片 -->
+<div id="app">
+<el-carousel :interval="4000" type="card">
+<el-carousel-item :key="index" v-for="(image, index) in carouselImages">
+<img :alt="image.alt" :src="image.src"/>
+</el-carousel-item>
+</el-carousel>
+</div>
+</div>
+</div>
+<!-- 原代码中的其他部分 -->
+<div class="container">
+<div class="container__column">
+<img alt="猫王概览" src="images/猫王概览.jpg"/>
+<div class="container__content">
+<h3>摇滚之路</h3>
+<a href="摇滚之路.html"><p>从布鲁斯与灵魂乐的根基中咆哮而出，历经迷幻浪潮、朋克革命与金属狂潮......</p></a>
+</div>
+</div>
+<div class="container__column">
+<img alt="克里姆森王国概览" src="images/克里姆森王国概览.jpg"/>
+<div class="container__content">
+<h3>摇滚之窗</h3>
+<a href="rock_window.html"><p>拾取舞台背后的疯狂碎片，记录荒诞奇闻与鲜活动态。</p></a>
+</div>
+</div>
+<div class="container__column">
+<img alt="地下丝绒概览" src="images/地下丝绒概览.jpg"/>
+<div class="container__content">
+<h3>摇滚名人堂</h3>
+<a href="rock_hall_of_fame.html"><p>用国籍划分的声浪版图，铭刻那些用吉他点燃世界的名字与灵魂。</p></a>
+</div>
+</div>
+</div>
+<div class="guestbook">
+<input id="message-input" placeholder="请输入留言" type="text"/>
+<button onclick="submitMessage()">提交留言</button>
+</div>
+<div class="word-cloud" id="word-cloud"></div>
+<div class="footer-quote">
+<p>Please don't put your life in the hands</p>
+<p>Of a Rock n Roll band</p>
+<p>Who'll throw it all away</p>
+<p>——Oasis - Don't Look Back in Anger</p>
+</div>
+<script>
+        function submitMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value;
+            if (message) {
+                // 保存留言到本地存储
+                let messages = localStorage.getItem('messages');
+                if (!messages) {
+                    messages = [];
+                } else {
+                    messages = JSON.parse(messages);
+                }
+                messages.push(message);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                input.value = '';
+                // 跳转到留言板页面
+                window.location.href = 'guestbook.html';
+            }
+        }
+
+        // 确保没有阻止导航栏链接的默认行为
+        const navLinks = document.querySelectorAll('.topnav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                console.log('Link clicked:', this.href);
+                // 确保没有阻止默认跳转行为
+                // 如果这里有阻止默认行为的代码，注释掉或者修改
+                // event.preventDefault(); 
+            });
+        });
+
+        // 滚动事件监听
+        window.addEventListener('scroll', function() {
+            const parallaxBackground = document.querySelector(".parallax-bg");
+            const scrollTop = window.scrollY;
+            const maxScroll = window.innerHeight * 0.5;
+            let opacity = 1 - (scrollTop / maxScroll);
+            opacity = Math.max(0, Math.min(1, opacity));
+            parallaxBackground.style.opacity = opacity;
+
+            const topnav = document.querySelector('.topnav');
+            const headerHeight = document.querySelector('.parallax-top').offsetHeight;
+            // 调整后的透明度计算公式
+            const scrollRatio = Math.min(1, scrollTop / headerHeight);
+            const opacityNav = Math.max(0, 1 - Math.pow(scrollRatio, 2));
+            topnav.style.opacity = opacityNav;
+        });
+
+        // 初始化Vue应用
+        const { createApp } = Vue;
+        const app = createApp({
+            data() {
+                return {
+                    carouselImages: [
+                        { src: 'images/披头士.jpg', alt: '披头士' },
+                        { src: 'images/齐柏林飞艇.jpg', alt: '齐柏林飞艇' },
+                        { src: 'images/acdc.jpg', alt: 'AC/DC' },
+                        { src: 'images/涅槃.jpg', alt: '涅槃' },
+                        { src: 'images/枪花.jpg', alt: '枪花' },
+                        { src: 'images/Blur.jpg', alt: 'Blur' },
+                        { src: 'images/brandi.jpg', alt: 'brandi' },
+                        { src: 'images/Florence machine.jpg', alt: 'Florence machine' },
+                        { src: 'images/patti smith.jpg', alt: 'patti smith' },
+                        { src: 'images/Queen.jpg', alt: 'Queen' },
+                        { src: 'images/suede.jpg', alt: 'suede' },
+                        { src: 'images/简琼特.jpg', alt: '简琼特' }
+                    ]
+                };
+            }
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+</html>
