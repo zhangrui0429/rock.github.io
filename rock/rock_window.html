@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摇滚之窗</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        body {
+            background: #0099F7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #F11712, #0099F7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #F11712, #0099F7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            animation: lightFlicker 10s infinite alternate;
+            margin: 0;
+            padding-top: 80px; /* 为导航栏预留空间 */
+            padding-bottom: 80px; /* 为分页器留出底部空间 */
+        }
+
+        @keyframes lightFlicker {
+            0% {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+        }
+
+        /* 导航栏样式 */
+       .topnav {
+            overflow: hidden;
+            background-color: transparent; /* 导航背景透明 */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+            font-size: 1.2rem; /* 增大字号 */
+            font-weight: bold; /* 加粗字体 */
+        }
+
+       .topnav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+       .topnav li {
+            margin: 0;
+        }
+
+       .topnav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+       .topnav a:hover {
+            background-color: #ddd;
+            color: black; /* 鼠标悬停时文字变黑 */
+        }
+
+       .title-search-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            right: 100px;
+        }
+
+       .title {
+            background-image: url('images/kiss专辑.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px; /* 调整内边距 */
+            display: inline-block; /* 使宽度自适应内容 */
+            backdrop-filter: blur(10px); /* 添加毛玻璃效果 */
+            -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+            border-radius: 10px; /* 圆角边框 */
+            overflow: hidden; /* 防止模糊效果溢出 */
+        }
+
+       .title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2); /* 降低背景透明度 */
+        }
+
+       .title h1 {
+            position: relative;
+            color: white;
+            font-size: 48px;
+            margin: 0;
+        }
+
+       .cards-container {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding-top: 200px; /* 调整顶部内边距 */
+        }
+
+       .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* 让卡片从左上方开始排列 */
+            margin: -16px;
+        }
+
+       .cards__item {
+            flex-basis: 33.33%;
+            padding: 16px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+       .cards__item--large {
+            flex-basis: 66.66%; /* 增大伍德斯托克音乐节卡片的宽度 */
+        }
+
+       .cards__item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            background: url('images/record_pattern.png') repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+       .cards__item::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('images/smoke.png') repeat-x;
+            opacity: 0.5;
+            animation: smokeMove 10s linear infinite;
+        }
+
+        @keyframes smokeMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+       .cards__item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 8px;
+        }
+
+       .cards__item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+       .cards__item div {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.2s; /* 添加过渡效果 */
+        }
+
+       .cards__item div::before {
+            display: none;
+        }
+
+       .cards__item div::after {
+            content: url('images/acdc_logo.png');
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.7;
+        }
+
+       .cards__item div:hover::before {
+            display: none;
+        }
+
+       .cards__item div:active {
+            transform: scale(0.95); /* 点击时卡片缩放 */
+        }
+
+      .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+      .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-right: 1px solid #ccc;
+        }
+
+      .pagination a:last-child {
+            border-right: none;
+        }
+
+      .pagination a:active {
+            background-color: #ccc; /* 点击时变成灰色 */
+        }
+
+      .search-container {
+            display: flex;
+        }
+
+      .search-container input[type="text"] {
+            padding: 16px; /* 进一步增大搜索框内边距 */
+            width: 300px; /* 增大搜索框宽度 */
+            border: 2px solid white; /* 设置边框为白色 */
+            border-radius: 4px 0 0 4px;
+            background-color: transparent; /* 背景透明 */
+            color: white;
+            font-size: 16px;
+        }
+
+      .search-container button {
+            padding: 16px 20px; /* 增大按钮内边距 */
+            background-color: transparent; /* 背景透明 */
+            color: white;
+            border: 2px solid white; /* 白边 */
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+      .search-container button::before {
+            content: '\f002'; /* Font Awesome 搜索图标 */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        @keyframes blink {
+            0% {
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                background-color: rgba(255, 255, 0, 0.8);
+            }
+            100% {
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+        }
+
+       .blink {
+            animation: blink 1s ease-in-out 3;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="topnav">
+        <ul class="flex justify-center space-x-8 py-4">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="摇滚之路.html">摇滚之路</a></li>
+            <li><a href="rock_window.html">摇滚之窗</a></li>
+            <li><a href="rock_hall_of_fame.html">摇滚名人堂</a></li>
+            <li><a href="guestbook.html">留言板</a></li>
+        </ul>
+    </div>
+    <div class="title-search-wrapper">
+        <div class="title">
+            <h1>摇滚之窗</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="搜索卡片关键词">
+            <button onclick="searchCards()"></button>
+        </div>
+    </div>
+    <div class="cards-container">
+        <div class="cards">
+            <!-- 卡片示例 -->
+            <div class="cards__item">
+                <a href="https://faroutmagazine.co.uk/wolf-alice-tease-fourth-album-cryptic-posts/">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/R1344-468-The-Rolling-Stones-Some-Girls封面.jpg" alt="R1344-468-The-Rolling-Stones-Some-Girls封面">
+                        <h2>最新资讯|Wolf Alice回归</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cards__item">
+                <a href="梗图.html">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/小猫never mind.jpg" alt="小猫never mind">
+                        <h2>乐迷二创|最新梗图合集</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cards__item">
+                <a href="https://rockhall.com/2024-inductees/">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/摇滚名人堂.jpg" alt="摇滚名人堂">
+                        <h2>最新资讯|2024年摇滚名人堂揭晓</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cards__item">
+                <a href="https://www.academia.edu/34243937/The_Hard_Work_of_Screaming_Physical_Exertion_and_Affective_Labor_Among_Mexico_Citys_Punk_Vocalists">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/摇滚人类学.jpg" alt="摇滚人类学">
+                        <h2>摇滚分叉|人类学：摇滚中的噪音嘶吼和情感劳动</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cards__item">
+                <a href="https://online.berklee.edu/takenote/25-influential-female-rockers-through-the-decades/">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/摇滚女性.jpg" alt="摇滚女性">
+                        <h2>摇滚深度|滚圈女子图鉴</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cards__item">
+                <a href="https://www.ranker.com/list/best-rock-music-movies-list/ranker-film">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/猜火车.jpg" alt="猜火车">
+                        <h2>摇滚深度|不得不看的摇滚电影</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container" style="display:none;">
+        <div class="cards" style="justify-content: center;">
+            <div class="cards__item cards__item--large">
+                <a href="https://allthatsinteresting.com/woodstock-festival-1969">
+                    <div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 16px;">
+                        <img src="images/伍德斯托克.jpg" alt="伍德斯托克">
+                        <h2>摇滚深度|1969伍德斯托克音乐节：爱与和平的乌托邦</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container" style="display:none;">
+        <div class="cards">
+        </div>
+    </div>
+    <div class="cards-container" style="display:none;">
+        <div class="cards">
+        </div>
+    </div>
+    <div class="cards-container" style="display:none;">
+        <div class="cards">
+        </div>
+    </div>
+    <div class="cards-container" style="display:none;">
+        <div class="cards">
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" onclick="showPage(1); return false;">1</a>
+        <a href="#" onclick="showPage(2); return false;">2</a>
+        <a href="#" onclick="showPage(3); return false;">3</a>
+        <a href="#" onclick="showPage(4); return false;">4</a>
+        <a href="#" onclick="showPage(5); return false;">5</a>
+        <a href="#" onclick="showPage(6); return false;">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+    <script>
+        function showPage(page) {
+            const containers = document.querySelectorAll('.cards-container');
+            containers.forEach((container, index) => {
+                container.style.display = index === page - 1? 'flex' : 'none';
+            });
+        }
+
+        function searchCards() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.cards__item h2');
+            const containers = document.querySelectorAll('.cards-container');
+            let found = false;
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    const cardDiv = card.closest('div');
+                    const container = cardDiv.closest('.cards-container');
+                    const pageIndex = Array.from(containers).indexOf(container);
+                    showPage(pageIndex + 1);
+                    cardDiv.classList.add('blink');
+                    cardDiv.addEventListener('animationend', () => {
+                        cardDiv.classList.remove('blink');
+                    });
+                    cardDiv.scrollIntoView({ behavior:'smooth' });
+                    found = true;
+                    return;
+                }
+            });
+            if (!found) {
+                alert('未找到匹配内容');
+            }
+        }
+
+        // 确保没有阻止导航栏链接的默认行为
+        const navLinks = document.querySelectorAll('.topnav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                console.log('Link clicked:', this.href);
+                // 确保没有阻止默认跳转行为
+                // 如果这里有阻止默认行为的代码，注释掉或者修改
+                // event.preventDefault(); 
+            });
+        });
+
+        // 滚动事件监听
+        window.addEventListener('scroll', function() {
+            const topnav = document.querySelector('.topnav');
+            if (window.scrollY > 0) {
+                topnav.style.opacity = 0;
+            } else {
+                topnav.style.opacity = 1;
+            }
+        });
+
+        showPage(1);
+    </script>
+</body>
+</html>

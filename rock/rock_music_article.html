@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>摇滚之路：一段激情与反叛的音乐史诗</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #108dc7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ef8e38, #108dc7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ef8e38, #108dc7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* 侧边栏样式 */
+        aside {
+            color: white;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 2rem;
+            overflow-y: auto;
+            background-color: transparent; /* 设置侧边栏背景为透明 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 侧边栏文字纵向居中 */
+            transition: left 0.3s ease;
+        }
+
+        aside.hidden {
+            left: -200px;
+        }
+
+        aside a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            margin: 0.5rem 0; /* 添加上下外边距 */
+        }
+
+        aside a:hover {
+            color: #a0aec0;
+        }
+
+        /* 关闭按钮样式 */
+        #close-sidebar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 打开侧边栏按钮样式 */
+        #open-sidebar {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* 容器样式 */
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            max-width: calc(100% - 250px);
+            margin: 3rem;
+            margin-left: 230px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .container.full-width {
+            margin-left: 3rem;
+            max-width: calc(100% - 6rem);
+        }
+
+        /* 标题样式 */
+        .title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            letter-spacing: -1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 流星动画 */
+        .title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><circle cx="50%" cy="50%" r="1" fill="white"/></svg>');
+            background-size: 1000px 1000px;
+            animation: meteorShower 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes meteorShower {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1000px -1000px;
+            }
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            line-height: 1.15;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 4px solid #fff;
+            padding-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subsection-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            line-height: 1.2;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid #fff;
+        }
+
+        /* 段落样式 */
+        p {
+            font-size: clamp(1.375rem, 3vw, 1.5rem);
+            line-height: 1.9;
+            margin-bottom: 1.75rem;
+            text-align: justify;
+            color: #fff;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        /* 分隔线样式 */
+        hr {
+            margin: 4rem 0;
+            border-top: 1px solid #fff;
+        }
+
+        /* 图片样式 */
+        img {
+            width: 60%;
+            height: auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            margin-top: 2rem; /* 图片和文字之间增加间距 */
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img:hover {
+            transform: scale(1.03);
+        }
+
+        /* 导航栏样式 */
+        .topnav {
+            overflow: hidden;
+            background-color: transparent; /* 导航背景透明 */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+            font-size: 1.2rem; /* 增大字号 */
+            font-weight: bold; /* 加粗字体 */
+        }
+
+        .topnav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .topnav li {
+            margin: 0;
+        }
+
+        .topnav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* 导航栏悬停效果 */
+        nav ul li a:hover {
+            color: #ff6347;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="topnav">
+        <ul class="flex justify-center space-x-8 py-4">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="摇滚之路.html">摇滚之路</a></li>
+            <li><a href="rock_window.html">摇滚之窗</a></li>
+            <li><a href="rock_hall_of_fame.html">摇滚名人堂</a></li>
+            <li><a href="guestbook.html">留言板</a></li>
+        </ul>
+    </div>
+    <aside id="sidebar">
+        <button id="close-sidebar" onclick="closeSidebar()"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#1950s">1950年代</a>
+        <a href="#1960s">1960年代</a>
+        <a href="#1970s">1970年代</a>
+        <a href="#1980s">1980年代</a>
+        <a href="#1990s">1990年代</a>
+        <a href="#2000s">2000年代</a>
+        <a href="#2010s">2010年代至今</a>
+    </aside>
+    <button id="open-sidebar" onclick="openSidebar()"><i class="fa-solid fa-bars"></i></button>
+    <div class="container" id="main-container">
+        <h1 class="title">摇滚之路：一段激情与反叛的音乐史诗</h1>
+
+        <h2 id="1950s" class="section-title">1950年代：摇滚的诞生——从边缘到主流的轰鸣</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\初期摇滚.jpg" alt="1950年代摇滚初期">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>二战的硝烟刚刚散去，世界在废墟中重建，美国迎来了经济的黄金时代。然而，表面的繁荣掩盖不了社会的裂痕——种族隔离的阴影依然笼罩，青少年的声音被压抑在成人世界的规则之下。正是在这样的背景下，一种全新的音乐形式悄然萌芽，它带着原始的冲动和反叛的呐喊，打破了种族的界限，点燃了年轻一代的热情。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>摇滚乐（Rock and Roll）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>Chuck Berry、Elvis Presley、Little Richard</p>
+        <p>1954年，Elvis Presley用一首《That's All Right》掀开了摇滚乐的序幕。他的扭胯和嗓音让保守的社会震惊，却让年轻人疯狂。Chuck Berry的吉他 riff 如同闪电划破夜空，成为摇滚的标志性符号。Little Richard则以他狂野的舞台表现和充满力量的嗓音，为摇滚注入了灵魂。摇滚乐不仅是音乐的革新，更是一场文化的革命，它让边缘的声音走向了中心。</p>
+        <hr>
+
+        <h2 id="1960s" class="section-title">1960年代：摇滚的黄金时代——从反叛到觉醒的呐喊</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\60.jpg" alt="1960年代摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>这是一个充满矛盾与激情的年代。冷战的阴云笼罩全球，越南战争的炮火点燃了反战的怒火，民权运动的浪潮席卷美国，青年一代开始质疑权威，追求自由与平等。摇滚乐成为了这场文化觉醒的旗帜，它不仅是音乐，更是一种精神的表达。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>迷幻摇滚（Psychedelic Rock）、民谣摇滚（Folk Rock）、布鲁斯摇滚（Blues Rock）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>The Beatles、The Rolling Stones、Jimi Hendrix、Bob Dylan</p>
+        <p>1964年，The Beatles登陆美国，掀起了“英伦入侵”的狂潮。他们的音乐从早期的轻快旋律逐渐转向深刻的社会反思。Bob Dylan用民谣摇滚为时代发声，他的《Blowin' in the Wind》成为反战运动的圣歌。Jimi Hendrix的吉他如同火焰，燃烧着迷幻摇滚的灵魂。1969年的伍德斯托克音乐节，数十万人在泥泞中高唱和平与爱，摇滚乐成为了一个时代的象征。</p>
+        <hr>
+
+        <h2 id="1970s" class="section-title">1970年代：摇滚的多样化与巅峰——从实验到极致的探索</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\70.jpg" alt="1970年代摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>1970年代的世界充满了动荡与变革。经济滞胀让人们对未来感到迷茫，冷战的阴影依然挥之不去。然而，摇滚乐却在这一时期达到了艺术的巅峰，它不再局限于一种风格，而是展开了多元化的探索。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>硬摇滚（Hard Rock）、重金属（Heavy Metal）、朋克摇滚（Punk Rock）、前卫摇滚（Progressive Rock）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>Led Zeppelin、Pink Floyd、The Clash、Queen</p>
+        <p>Led Zeppelin和Black Sabbath用沉重的吉他和咆哮的嗓音开创了重金属的先河。Pink Floyd的前卫摇滚如同一场听觉的旅行，他们的《The Dark Side of the Moon》探讨了时间、金钱与疯狂。1977年，The Clash的《London Calling》用朋克的粗糙与直接，喊出了对社会的愤怒。Queen则以歌剧摇滚的华丽与宏大，征服了全球听众，他们的《Bohemian Rhapsody》成为了永恒的经典。</p>
+        <hr>
+
+        <h2 id="1980s" class="section-title">1980年代：摇滚的商业化与另类崛起——从华丽到真实的回归</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\80.jpg" alt="1980年代摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>1980年代是一个充满矛盾的时代。冷战的紧张局势达到顶峰，消费主义的浪潮席卷全球，MTV的诞生让音乐进入了视觉化的时代。摇滚乐在这一时期既经历了商业化的巅峰，也迎来了另类音乐的悄然崛起。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>华丽金属（Glam Metal）、另类摇滚（Alternative Rock）、后朋克（Post-Punk）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>Guns N' Roses、U2、The Cure、Nirvana（早期）</p>
+        <p>Guns N' Roses用华丽的外表和硬核的音乐征服了主流市场，他们的《Sweet Child O' Mine》成为了时代的标志。与此同时，U2和The Cure通过另类摇滚和后朋克风格，探索着更深层次的情感与社会议题。1989年，Nirvana发行了首张专辑《Bleach》，为1990年代的另类摇滚革命埋下了伏笔。</p>
+        <hr>
+
+        <h2 id="1990s" class="section-title">1990年代：另类摇滚的统治——从地下到主流的逆袭</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\90.jpg" alt="1990年代摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>冷战的结束带来了短暂的乐观，但全球化与互联网的兴起也让世界变得更加复杂。摇滚乐在这一时期迎来了最后一次全球性的统治，另类摇滚从地下走向了主流，成为了年轻一代的声音。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>垃圾摇滚（Grunge）、另类摇滚（Alternative Rock）、英伦摇滚（Britpop）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>Nirvana、Pearl Jam、Radiohead、Oasis</p>
+        <p>1991年，Nirvana的《Nevermind》如同一颗炸弹，彻底改变了摇滚乐的格局。垃圾摇滚的粗糙与真实击中了无数人的心灵。Pearl Jam和Soundgarden等乐队也迅速崛起，成为了这一运动的代表。与此同时，英国的Oasis和Blur掀起了“英伦摇滚”的风潮，他们的音乐充满了青春的傲慢与激情。Radiohead则以《OK Computer》（1997年）开创了实验摇滚的新领域，他们的音乐充满了对科技与未来的思考。</p>
+        <hr>
+
+        <h2 id="2000s" class="section-title">2000年代：摇滚的分化与复兴——从传统到数字的转型</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\00.jpg" alt="2000年代摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>互联网的普及让音乐传播的方式发生了翻天覆地的变化，数字音乐的崛起让传统唱片业面临挑战。摇滚乐在这一时期逐渐分化，既有对传统的回归，也有对新形式的探索。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>后车库摇滚（Post-Grunge）、独立摇滚（Indie Rock）、电子摇滚（Electronic Rock）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>The Strokes、The White Stripes、Arcade Fire、Linkin Park</p>
+        <p>The Strokes和The White Stripes用简约的编曲和原始的能量复兴了车库摇滚的精神。Arcade Fire通过独立摇滚赢得了广泛关注，他们的音乐充满了史诗般的情感。Linkin Park则将摇滚与电子元素结合，开创了新的风格。尽管摇滚乐在主流音乐中的地位有所下降，但其多样性和创造力依然不减。</p>
+        <hr>
+
+        <h2 id="2010s" class="section-title">2010年代至今：摇滚的新探索——从复古到未来的跨越</h2>
+        <img src="C:\Users\23095\rock\摇滚之路2\10.jpg" alt="2010年代至今摇滚">
+        <h3 class="subsection-title">时代背景</h3>
+        <p>社交媒体时代的到来让世界变得更加碎片化，气候变化与全球政治动荡让人们感到不安。摇滚乐在这一时期继续探索新的可能性，既有对经典的致敬，也有对未来的大胆想象。</p>
+        <h3 class="subsection-title">摇滚类别</h3>
+        <p>后摇滚（Post-Rock）、实验摇滚（Experimental Rock）、复古摇滚（Retro Rock）</p>
+        <h3 class="subsection-title">代表人物</h3>
+        <p>Tame Impala、Muse、Greta Van Fleet</p>
+        <p>Tame Impala将迷幻摇滚与电子音乐结合，创造出一种全新的听觉体验。Muse则以宏大的编曲和科幻主题吸引了全球听众，他们的音乐充满了未来感。Greta Van Fleet等乐队则通过复古摇滚风格向经典摇滚致敬，他们的音乐让人仿佛回到了1970年代的黄金时代。尽管摇滚乐不再是主流音乐的主导力量，但其精神依然在无数乐队和乐迷中传承。</p>
+        <hr>
+
+        <h2 class="section-title">结语：摇滚不死，精神永存</h2>
+        <p>从1950年代的诞生到21世纪的多样化发展，摇滚乐始终是反叛、自由和创造的象征。它不仅是音乐，更是一种生活态度。无论时代如何变迁，摇滚的精神将永远激励着每一个追求真实与自由的灵魂。</p>
+    </div>
+    <script>
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('main-container');
+            const openButton = document.getElementById('open-sidebar');
+            sidebar.classList.add('hidden');
+            container.classList.add('full-width');
+            openButton.style.display = 'block';
+        }
+
+        function openSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('main-container');
+            const openButton = document.getElementById('open-sidebar');
+            sidebar.classList.remove('hidden');
+            container.classList.remove('full-width');
+            openButton.style.display = 'none';
+        }
+
+        // 确保没有阻止导航栏链接的默认行为
+        const navLinks = document.querySelectorAll('.topnav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                console.log('Link clicked:', this.href);
+                // 确保没有阻止默认跳转行为
+                // 如果这里有阻止默认行为的代码，注释掉或者修改
+                // event.preventDefault(); 
+            });
+        });
+
+        // 滚动事件监听
+        window.addEventListener('scroll', function() {
+            const topnav = document.querySelector('.topnav');
+            const headerHeight = document.querySelector('.parallax-top').offsetHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            // 调整后的透明度计算公式
+            const scrollRatio = Math.min(1, scrollTop / headerHeight);
+            const opacity = Math.max(0, 1 - Math.pow(scrollRatio, 2));
+            topnav.style.opacity = opacity;
+        });
+    </script>
+</body>
+
+</html>

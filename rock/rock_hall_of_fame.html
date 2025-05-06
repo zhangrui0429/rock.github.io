@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摇滚名人堂</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #780206;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+       .header {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px; /* 增加标题与导航栏的距离 */
+        }
+       .header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+       .masonry-container {
+            column-count: 3;
+            column-gap: 20px;
+            padding: 20px;
+        }
+       .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+       .masonry-item:hover {
+            transform: scale(1.05);
+        }
+       .masonry-item a {
+            color: white;
+            text-decoration: none;
+        }
+       .masonry-item img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+       .masonry-item-info {
+            padding: 20px;
+        }
+       .masonry-item-info h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+       .masonry-item-info p {
+            font-size: 16px;
+            color: white;
+        }
+        /* 导航栏样式 */
+       .topnav {
+            overflow: hidden;
+            background-color: transparent; /* 导航背景透明 */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            font-size: 1.2rem; /* 增大字号 */
+            font-weight: bold; /* 加粗字体 */
+            transition: top 0.3s ease;
+        }
+
+       .topnav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+       .topnav li {
+            margin: 0;
+        }
+
+       .topnav a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+       .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="topnav">
+        <ul class="flex justify-center space-x-8 py-4">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="摇滚之路.html">摇滚之路</a></li>
+            <li><a href="rock_window.html">摇滚之窗</a></li>
+            <li><a href="rock_hall_of_fame.html">摇滚名人堂</a></li>
+            <li><a href="guestbook.html">留言板</a></li>
+        </ul>
+    </div>
+    <div class="header">
+        <h1>摇滚名人堂</h1>
+    </div>
+    <div class="masonry-container">
+
+        <div class="masonry-item">
+            <a href="british-rock_stars.html">
+                <img src="images/吉米.jpg" alt="英国">
+                <div class="masonry-item-info">
+                    <h2>英国</h2>
+                    <p>摇滚发源地，英伦风潮影响全球音乐史。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/u2.jpg" alt="爱尔兰">
+                <div class="masonry-item-info">
+                    <h2>爱尔兰</h2>
+                    <p>凯尔特民谣与现代摇滚交织，诗意抗争与深情共鸣。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/鲍勃迪伦.jpg" alt="北美">
+                <div class="masonry-item-info">
+                    <h2>北美</h2>
+                    <p>摇滚文化中心，从叛逆根源到商业巅峰。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/澳大利亚摇滚.jpg" alt="澳大利亚">
+                <div class="masonry-item-info">
+                    <h2>澳大利亚</h2>
+                    <p>硬摇滚与独立之声，荒野能量迸发舞台。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="japanese_rock_stars.html">
+                <img src="images/日本摇滚.jpg" alt="日本">
+                <div class="masonry-item-info">
+                    <h2>日本</h2>
+                    <p>视觉系摇滚殿堂，极致美学与技术的狂欢。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="korean_rock_stars.html">
+                <img src="images/韩国摇滚.jpg" alt="韩国">
+                <div class="masonry-item-info">
+                    <h2>韩国</h2>
+                    <p>偶像化摇滚新势力，韩流重塑音乐边界。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/中国摇滚.jpg" alt="中国">
+                <div class="masonry-item-info">
+                    <h2>中国</h2>
+                    <p>从地下呐喊到主流破局，时代之声觉醒。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="russian_rock_stars.html">
+                <img src="images/俄罗斯摇滚.jpg" alt="俄罗斯">
+                <div class="masonry-item-info">
+                    <h2>俄罗斯</h2>
+                    <p>冷峻旋律承载社会隐喻，铁幕下的自由回响。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/其他欧洲国家摇滚.jpg" alt="其他欧洲国家">
+                <div class="masonry-item-info">
+                    <h2>其他欧洲国家</h2>
+                    <p>多元实验精神，古典与现代摇滚交融地。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/南美摇滚.jpg" alt="南美">
+                <div class="masonry-item-info">
+                    <h2>南美</h2>
+                    <p>拉丁节奏混搭反叛灵魂，热带摇滚风暴。</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="masonry-item">
+            <a href="waiting.html">
+                <img src="images/非洲摇滚.jpg" alt="非洲">
+                <div class="masonry-item-info">
+                    <h2>非洲</h2>
+                    <p>传统鼓点碰撞电吉他，抗争与融合的脉搏。</p>
+                </div>
+            </a>
+        </div>
+    
+    </div>
+    <script>
+        // 确保没有阻止导航栏链接的默认行为
+        const navLinks = document.querySelectorAll('.topnav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                console.log('Link clicked:', this.href);
+                // 确保没有阻止默认跳转行为
+                // 如果这里有阻止默认行为的代码，注释掉或者修改
+                // event.preventDefault(); 
+            });
+        });
+
+        // 滚动事件监听
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const topnav = document.querySelector('.topnav');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // 向下滚动
+                topnav.style.top = '-100px';
+            } else {
+                // 向上滚动
+                topnav.style.top = '0';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

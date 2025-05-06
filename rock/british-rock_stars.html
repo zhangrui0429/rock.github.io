@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摇滚名人介绍</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #780206;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white; /* 设置文字颜色为白色，以便在深色背景下可见 */
+        }
+
+       .accordion {
+            background: #780206;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+       .accordion::after {
+            content: '+';
+            float: right;
+            margin-left: 5px;
+            color: white;
+        }
+
+       .active::after {
+            content: '-';
+        }
+
+       .active,
+       .accordion:hover {
+            background: #780206;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            opacity: 0.8;
+        }
+
+       .panel {
+            padding: 0 18px;
+            background: #bdc3c7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            color: white; /* 设置面板内文字颜色为白色，适应新背景 */
+        }
+    </style>
+</head>
+
+<body>
+    
+    <button class="accordion">约翰・列侬（John Lennon） - 1940年</button>
+    <div class="panel">
+        <p>英国著名摇滚乐队 “披头士”（The Beatles）成员，是乐队的灵魂人物之一，摇滚史上最伟大的音乐家之一，同时也是诗人、社会活动家与反战者。他的音乐风格多样，融合了民谣、摇滚、迷幻摇滚等。代表作品除了披头士乐队的诸多经典外，个人作品如《Imagine》也具有深远的影响力，以其深刻的歌词和动人的旋律，传达出对和平与美好世界的向往。</p>
+    </div>
+    
+    <button class="accordion">吉米・亨德里克斯（Jimi Hendrix） - 1942年</button>
+    <div class="panel">
+        <p>出生于美国，但在英国取得了巨大的音乐成就，对英国摇滚发展影响深远。他是摇滚史上最伟大的吉他手之一，以独特的演奏风格和创新的音乐理念闻名。演奏技巧高超，常使用反馈、哇音等效果创造出独特的吉他音色，代表作品有《Hey Joe》《Purple Haze》等。他将摇滚、蓝调、迷幻等元素融合，其舞台表演极具震撼力，对后来的摇滚吉他手产生了深远的影响。</p>
+    </div>
+    
+    <button class="accordion">米克・贾格尔（Mick Jagger） - 1943年</button>
+    <div class="panel">
+        <p>英国摇滚乐队滚石乐队（The Rolling Stones）的创始成员之一，自1962年起担任乐队主唱，还参与演奏口琴、吉他和钢琴。他的嗓音独特，舞台动作极具感染力，与基思・理查兹的吉他演奏风格共同成为滚石乐队的标志。其职业生涯横跨50多年，被称为 “摇滚史上最受欢迎和最有影响力的主唱之一”。个人音乐作品有《She's the Boss》《Primitive Cool》《Wandering Spirit》等专辑。</p>
+    </div>
+    
+    <button class="accordion">罗杰・达尔特雷（Roger Daltrey） - 1944年</button>
+    <div class="panel">
+        <p>英国摇滚乐队 “谁人”（The Who）的主唱。他的舞台表演充满激情和活力，常常以独特的嗓音和极具感染力的表演风格吸引观众。“谁人” 乐队以其创新的音乐风格和充满力量的现场演出而闻名，代表作品有《My Generation》《Pinball Wizard》《Won't Get Fooled Again》等，乐队在音乐技术创新方面也有很大贡献，是摇滚史上的重要乐队之一。</p>
+    </div>
+    
+    <button class="accordion">埃里克・克莱普顿（Eric Clapton） - 1945年</button>
+    <div class="panel">
+        <p>英国摇滚和布鲁斯吉他手、歌手和词曲作者。他是唯一三次入选摇滚名人堂的人，分别以独唱艺术家以及 Yardbirds 和 Cream 乐队成员的身份入选。演奏风格融合了布鲁斯、摇滚等多种元素，以其精湛的吉他技艺而闻名于世，代表作品有《Layla》《I Shot the Sheriff》等。他的音乐生涯漫长且辉煌，对摇滚吉他的发展产生了深远影响。</p>
+    </div>
+    
+    <button class="accordion">彼得・汤森（Pete Townshend） - 1945年</button>
+    <div class="panel">
+        <p>“谁人” 乐队的吉他手、主唱和主要词曲创作者。他的吉他演奏技巧独特，经常使用反馈和强力和弦等手法创造出强烈的音乐效果，同时他的歌曲创作也具有深刻的思想内涵，常常探讨社会、政治和个人成长等主题。除了乐队作品外，他也有一些个人音乐作品，对摇滚音乐的发展和创新起到了重要推动作用。</p>
+    </div>
+    
+    <button class="accordion">弗雷迪・默丘里（Freddie Mercury） - 1946年</button>
+    <div class="panel">
+        <p>英国摇滚乐队皇后乐队（Queen）的主唱。他拥有强大的嗓音和极具魅力的舞台表现力，其音域宽广，能轻松驾驭多种风格的歌曲。在他的带领下，皇后乐队创造了许多经典作品，如《Bohemian Rhapsody》《We Will Rock You》《We Are the Champions》等，这些歌曲至今仍被广泛传唱，乐队的音乐气势恢宏，充满戏剧性和感染力，他的表演为皇后乐队的成功奠定了坚实基础。</p>
+    </div>
+    
+    <button class="accordion">大卫・鲍伊（David Bowie） - 1947年</button>
+    <div class="panel">
+        <p>出生于英国伦敦布里克斯顿。1967年发行第一张个人录音室专辑《David Bowie》，1969年凭借摇滚单曲《Space Oddity》受到关注。他在音乐上不断创新，创造了多个标志性形象，如虚拟太空生物齐格・星尘等。1976年主演科幻电影《天外来客》，还凭借音乐短片《Jazzin' for Blue Jean》获得格莱美奖。1996年入驻摇滚名人堂，其音乐风格涵盖摇滚、电子、实验等多种元素，对后世摇滚音乐发展产生了深远影响。</p>
+    </div>
+    
+    <button class="accordion">艾尔顿・约翰（Elton John） - 1947年</button>
+    <div class="panel">
+        <p>英国著名摇滚歌手、钢琴家。音乐风格融合了摇滚、流行、民谣等多种元素，以华丽的舞台风格和深情的演唱著称。他的歌曲旋律优美，歌词富有诗意，代表作品有《Rocket Man》《Candle in the Wind》等。在音乐生涯中，他取得了众多的商业成功和奖项，同时也积极参与慈善事业，是摇滚乐坛的重要人物。</p>
+    </div>
+    
+    <button class="accordion">罗伯特・普兰特（Robert Plant） - 1948年</button>
+    <div class="panel">
+        <p>英国摇滚乐队齐柏林飞艇（Led Zeppelin）的主唱。他拥有独特的嗓音，音域宽广且极具爆发力，能够驾驭各种风格的歌曲，从硬摇滚到民谣都能演绎得淋漓尽致。在齐柏林飞艇时期，他与吉米・佩奇（Jimmy Page）等成员合作，创作了许多经典作品，如《Stairway to Heaven》《Whole Lotta Love》等，乐队的音乐风格融合了布鲁斯、摇滚和民谣，对后来的摇滚乐队产生了重要影响。</p>
+    </div>
+    
+    <button class="accordion">斯汀（Sting） - 1951年</button>
+    <div class="panel">
+        <p>英国摇滚歌手、贝斯手，前警察乐队（The Police）主唱。嗓音独特，具有很强的辨识度，音乐风格多样，融合了摇滚、流行、雷鬼等元素。警察乐队时期的代表作品如《Every Breath You Take》《Roxanne》等都是经典之作。单飞后，他也继续在音乐领域取得成功，不断探索新的音乐风格和表现形式，同时还涉足演艺界和慈善事业。</p>
+    </div>
+    
+    <button class="accordion">伊恩・柯蒂斯（Ian Curtis） - 1956年</button>
+    <div class="panel">
+        <p>英国摇滚乐队快乐分裂（Joy Division）的主唱。他的演唱风格独特，充满了压抑、痛苦和神秘的气息，其歌词常常反映出对社会现实的不满和内心的挣扎。乐队的音乐风格融合了后朋克、新浪潮等元素，代表作品有《Love Will Tear Us Apart》等。伊恩・柯蒂斯在音乐史上具有重要地位，他的形象和音乐理念对后来的众多乐队和音乐人产生了深远的影响。</p>
+    </div>
+    
+    <button class="accordion">莫里西（Morrissey） - 1959年</button>
+    <div class="panel">
+        <p>英国摇滚歌手，以其独特的嗓音和富有诗意的歌词闻名。他是史密斯乐队（The Smiths）的主唱，乐队音乐风格融合了独立摇滚、民谣等元素，歌词常常探讨社会问题、人际关系和个人情感等主题，具有浓厚的英伦风格。史密斯乐队解散后，莫里西继续其个人音乐生涯，代表作品有《How Soon Is Now?》《There Is a Light That Never Goes Out》等。</p>
+    </div>
+    
+    <button class="accordion">贾维斯・考克（Jarvis Cocker） - 1963年</button>
+    <div class="panel">
+        <p>英国摇滚乐队模糊乐队（Blur）的主唱，是90年代英伦摇滚的代表人物之一。他的歌曲以幽默、讽刺和对英国社会文化的独特观察而闻名，其演唱风格轻松随意又充满个性。代表作品如《Parklife》等，以独特的视角描绘了英国的城市生活和年轻人的心态，为英伦摇滚的发展和推广起到了重要作用。</p>
+    </div>
+    
+    <button class="accordion">科特妮・洛芙（Courtney Love） - 1964年</button>
+    <div class="panel">
+        <p>出生于美国，但与英国摇滚界关系密切。她是摇滚乐队 “洞穴”（Hole）的主唱，以其充满个性的音乐风格和强烈的舞台表现力而受到关注。音乐风格融合了朋克、摇滚和另类音乐等元素，代表作品有《Celebrity Skin》等。她在音乐界的形象独特，同时也因其个人生活和艺术观点而备受争议。</p>
+    </div>
+    
+    <button class="accordion">汤姆・约克（Thom Yorke） - 1968年</button>
+    <div class="panel">
+        <p>英国摇滚乐队电台司令（Radiohead）的主唱。他的嗓音空灵、富有情感，常常能够通过歌声传达出深刻的情感和思想。电台司令的音乐风格独特，融合了摇滚、电子、实验音乐等多种元素，不断探索音乐的新边界，代表作品有《Creep》《Fake Plastic Trees》等。汤姆・约克也会进行一些个人音乐创作，展现出不同的音乐风格和创作理念。</p>
+    </div>
+    
+    <button class="accordion">利亚姆・加拉格尔（Liam Gallagher） - 1972年</button>
+    <div class="panel">
+        <p>英国摇滚乐队绿洲乐队（Oasis）的主唱。他的嗓音具有强烈的爆发力和辨识度，舞台风格随性而充满激情。绿洲乐队的音乐风格融合了摇滚、流行等元素，代表作品《Wonderwall》《Don't Look Back in Anger》等成为英伦摇滚的经典之作，在全球范围内拥有大量粉丝，利亚姆・加拉格尔也因其个性和音乐才华成为英伦摇滚的标志性人物之一。</p>
+    </div>
+    
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
